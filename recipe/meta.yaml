@@ -20,11 +20,12 @@ requirements:
     - python {{ python_min }}
     - setuptools
   run:
+    - matminer ==0.7.4
+    - monty ==2022.4.26
     - python >={{ python_min }}
-    - matminer >=0.7.4
-    - scipy >=1.9.0
-    - monty >=2022.4.26
-    - scikit-learn >=1.0.1
+    - scikit-learn ==1.0.1
+    - scipy ==1.7.3
+    - numpy <1.23.0,>=1.16.5
 
 test:
   imports:
