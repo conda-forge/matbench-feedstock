@@ -26,6 +26,7 @@ requirements:
     - scikit-learn ==1.0.1
     - scipy ==1.7.3
     - numpy <1.23.0,>=1.16.5
+    - pymatgen <2024
 
 test:
   imports:
