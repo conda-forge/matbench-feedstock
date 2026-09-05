@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: matbench
+  version: "0.6"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/materialsproject/${{ name }}/archive/v${{ version }}.tar.gz
+  sha256: 6143472780920a9040f6a222f86e93da42e2fee075e426d598159e8405cfd9b4
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+  run:
+    - matminer ==0.7.4
+    - monty ==2022.4.26
+    - python >=${{ python_min }}
+    - scikit-learn ==1.0.1
+    - scipy ==1.7.3
+    - numpy <1.23.0,>=1.16.5
+    - pymatgen <2023
+
+tests:
+  - python:
+      imports:
+        - matbench
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: a machine learning benchmark for materials science
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/materialsproject/matbench
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
